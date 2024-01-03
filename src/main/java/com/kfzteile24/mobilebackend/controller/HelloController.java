@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 
 /**
@@ -25,9 +26,11 @@ public class HelloController {
     }
 
     @PostMapping("/hello")
-    public ResponseEntity<HelloResponse> responseHello(@RequestBody HelloRequest request) {
+    public ResponseEntity<HelloResponse> responseHello(@Valid @RequestBody HelloRequest request) {
 
-        final HelloResponse body = new HelloResponse(request.getSalesChannel().equals("www-k24-de") ? 1 : 2, BigDecimal.TEN);
+
+        final HelloResponse body = new HelloResponse(request.getSalesChannel().equals("www-k24-de") ? 1 : 2,
+                BigDecimal.TEN);
         return ResponseEntity.ok(body);
     }
 }
