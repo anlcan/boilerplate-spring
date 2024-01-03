@@ -21,7 +21,7 @@ jobs:
       - name: Log in to the Container registry
         uses: docker/login-action@v2.1.0
         with:
-          registry: ${{ env.DOCKER_REGISTRY_DOMAIN }}
+          registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
@@ -30,9 +30,9 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ env.DOCKER_REGISTRY_DOMAIN }}/${{ env.OWNER }}/${{ env.SERVICE_NAME }}/app:latest
-            ${{ env.DOCKER_REGISTRY_DOMAIN }}/${{ env.OWNER }}/${{ env.SERVICE_NAME }}/app:${{ github.sha }}
-            ${{ env.DOCKER_REGISTRY_DOMAIN }}/${{ env.OWNER }}/${{ env.SERVICE_NAME }}/app:${GITHUB_REF#refs/tags/}
+            ${GITHUB_REPOSITORY}/app:latest
+            ${GITHUB_REPOSITORY}/app:${{ github.sha }}
+            ${GITHUB_REPOSITORY}/app:${GITHUB_REF#refs/tags/}
 
 
 
