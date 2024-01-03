@@ -30,9 +30,9 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ vars.GITHUB_REPOSITORY }}/app:latest
-            ${{ vars.GITHUB_REPOSITORY }}/app:${{ github.sha }}
-            ${{ vars.GITHUB_REPOSITORY }}/app:${{ vars.GITHUB_REF_NAME }}
+            ${{ github.REPOSITORY }}/app:latest
+            ${{ github.REPOSITORY }}/app:${{ github.sha }}
+            ${{ github.REPOSITORY }}/app:${{ github.ref_name }}
 
 
 
