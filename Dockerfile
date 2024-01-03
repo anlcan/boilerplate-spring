@@ -1,6 +1,10 @@
 # Spring recommends liberica We recommend BellSoft Liberica JDK version 17. https://spring.io/quickstart/
 # https://registry.hub.docker.com/u/bellsoft
-FROM bellsoft/liberica-openjdk-alpine:21
+#FROM bellsoft/liberica-openjdk-alpine:21
+
+# ..however github actions only support amazon corretto (see .github/workflows/build)
+FROM amazoncorretto:21-alpine
+
 LABEL authors="anlcan"
 
 # Install newrelic agent
