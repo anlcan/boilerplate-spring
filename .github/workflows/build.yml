@@ -14,7 +14,7 @@ jobs:
           distribution: 'corretto' # Amazon version see Dockerfile
           java-version: '21'
           cache: 'maven'
-      - uses: stCarolas/setup-maven@v4.5 # this probably not needed on the github ubuntu
+      - uses: stCarolas/setup-maven@v4.5 # this is probably not needed on the github ubuntu
       - name: Build Artifact by Maven
         run: mvn clean package -DskipTest
 
@@ -29,7 +29,10 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.DOCKER_REGISTRY_DOMAIN }}/${{ env.OWNER }}/${{ env.SERVICE_NAME }}-service/app:${{ needs.set-vars.outputs.image_tag }}
+          tags: |
+          ${{ env.DOCKER_REGISTRY_DOMAIN }}/${{ env.OWNER }}/${{ env.SERVICE_NAME }}/app:latest
+          ${{ env.DOCKER_REGISTRY_DOMAIN }}/${{ env.OWNER }}/${{ env.SERVICE_NAME }}/app:${{ github.sha }}
+          ${{ env.DOCKER_REGISTRY_DOMAIN }}/${{ env.OWNER }}/${{ env.SERVICE_NAME }}/app:${GITHUB_REF#refs/tags/}
 
 
 
