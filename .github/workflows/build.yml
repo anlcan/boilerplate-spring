@@ -30,9 +30,9 @@ jobs:
           context: .
           push: true
           tags: |
-          ${{ env.DOCKER_REGISTRY_DOMAIN }}/${{ env.OWNER }}/${{ env.SERVICE_NAME }}/app:latest
-          ${{ env.DOCKER_REGISTRY_DOMAIN }}/${{ env.OWNER }}/${{ env.SERVICE_NAME }}/app:${{ github.sha }}
-          ${{ env.DOCKER_REGISTRY_DOMAIN }}/${{ env.OWNER }}/${{ env.SERVICE_NAME }}/app:${GITHUB_REF#refs/tags/}
+            ${{ env.DOCKER_REGISTRY_DOMAIN }}/${{ env.OWNER }}/${{ env.SERVICE_NAME }}/app:latest
+            ${{ env.DOCKER_REGISTRY_DOMAIN }}/${{ env.OWNER }}/${{ env.SERVICE_NAME }}/app:${{ github.sha }}
+            ${{ env.DOCKER_REGISTRY_DOMAIN }}/${{ env.OWNER }}/${{ env.SERVICE_NAME }}/app:${GITHUB_REF#refs/tags/}
 
 
 
