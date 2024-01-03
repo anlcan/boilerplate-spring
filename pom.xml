@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.kfzteile24</groupId>
 	<artifactId>mobile-backend</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1</version>
 	<name>mobile-backend</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
