@@ -36,3 +36,25 @@
     - enjoy
 
 # K24 Basics
+
+
+# TODO
+- new relic 
+  - tracing? 
+  - spring new relic addon
+- database 
+  - jpa 
+  - liquidbase 
+  - minikube 
+- docker-compose? 
+- spring 
+  - acuator
+  - env only controllers
+  - tests
+  - mvn profiles 
+  - configuration NOT in maven 
+- k8s
+  - ingress
+  - cronjob
+- localstack example
+
