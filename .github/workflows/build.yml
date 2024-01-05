@@ -27,8 +27,8 @@ jobs:
         uses: docker/login-action@v2.1.0
         with:
            registry: 'ghcr.io'
-           username: ${{ secrets.GH_USER }}
-           password: ${{ secrets.GH_TOKEN }}
+           username: ${{ secrets.DOCKER_USER }}
+           password: ${{ secrets.DOCKER_TOKEN }}
            # BEWARE THIS WILL NOT WORK unless you create a credentails and put them in the settings a
            # better use
       - name: Build and push Docker images
