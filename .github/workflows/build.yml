@@ -2,11 +2,13 @@ name: Build
 
 on: [push]
 
+permissions:
+  packages: write
+  contents: read
+
 jobs:
   build:
-    permissions:
-      packages: write
-      contents: read
+
     runs-on: ubuntu-latest
     # needs: [set-vars, unit-tests, spot-bugs, integration-tests]
     steps:
