@@ -1,11 +1,11 @@
 cp: c p
 
 m ?= default message
-branch=$(git rev-parse --abbrev-ref HEAD)
+branch=$(shell git rev-parse --abbrev-ref HEAD)
 
 p:
 	echo $(branch)
-	gith push origin $(branch)
+	git push origin $(branch)
 
 
 c:
