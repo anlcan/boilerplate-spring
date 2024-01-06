@@ -16,7 +16,8 @@ jobs:
           distribution: ${{ env.DISTRIBUTION }}
           java-version: ${{ env.JAVA_VERSION }}
       - name: Run unit tests
-        run: mvn -s ${MAVEN_SETTINGS_FILE} clean test
+        #run: mvn -s ${MAVEN_SETTINGS_FILE} clean test
+        run: mvn clean test
       - name: Create coverage report files
         run:
           mvn jacoco:report
