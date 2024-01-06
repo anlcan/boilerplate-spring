@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.kfzteile24</groupId>
-	<artifactId>boilerplate</artifactId>
+	<artifactId>boilerplate</artifactId> <!-- when/if you change artifactId-version, remember to update the Dockerfile -->
 	<version>0.1</version>
 	<name>boilerplate</name>
 	<description>Demo project for Spring Boot</description>
