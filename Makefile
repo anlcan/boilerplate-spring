@@ -2,9 +2,12 @@ cp: c p
 
 
 p:
-	branch = git rev-parse --abbrev-ref HEAD
+	export branch=`git rev-parse --abbrev-ref HEAD`
+	echo $(branch)
 	gith push origin $(branch)
 
+m ?= default message
 c:
-	git commit -am "$(message)"
+
+	git commit -am "$(m)"
 
