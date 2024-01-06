@@ -1,5 +1,8 @@
+
+
 # Spring Basics
 
+- use [actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html?query=health%27%20target=_blank%3E%3Cb%3Ehealth%3C/b%3E%3C/a%3E-groups) 
 - Separate transfer objects with suffix:
     - controller objects with -Request and -Response
     - queue objects with -Message
@@ -16,7 +19,8 @@
 # AWS Basics
 
 - use [localstack](https://github.com/localstack/localstack)
--
+- always publish through SNS 
+
 
 # k8s Basics
 
@@ -40,21 +44,23 @@
 
 # TODO
 - new relic 
-  - tracing? 
-  - spring new relic addon
+  - [ ] tracing? 
+  - [ ] spring new relic addon
 - database 
-  - jpa 
-  - liquidbase 
-  - minikube 
+  - [ ] jpa 
+  - [ ]liquidbase 
+  - [ ] minikube 
 - docker-compose? 
 - spring 
-  - acuator
-  - env only controllers
-  - tests
-  - mvn profiles 
-  - configuration NOT in maven 
+  - [ ] acuator
+  - [ ] env only controllers
+  - [ ] tests
+  - [ ] mvn profiles 
+  - [ ] configuration NOT in maven 
 - k8s
-  - ingress
-  - cronjob
-- localstack example
+  - [ ] ingress
+  - [ ] cronjob
+- localstack 
+  -  [ ] s3 
+  -  [ ] sns ingress & egress
 
