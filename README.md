@@ -60,7 +60,9 @@
 - k8s
   - [ ] ingress
   - [ ] cronjob
+  - [ ] configmaps
 - localstack 
   -  [ ] s3 
-  -  [ ] sns ingress & egress
+  -  [ ] sns ingress 
+  -  [ ] sqs
 
