@@ -1,7 +1,7 @@
-package com.kfzteile24.mobilebackend.controller;
+package com.kfzteile24.boilerplate.controller;
 
-import com.kfzteile24.mobilebackend.dto.hello.HelloRequest;
-import com.kfzteile24.mobilebackend.dto.hello.HelloResponse;
+import com.kfzteile24.boilerplate.dto.hello.HelloRequest;
+import com.kfzteile24.boilerplate.dto.hello.HelloResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

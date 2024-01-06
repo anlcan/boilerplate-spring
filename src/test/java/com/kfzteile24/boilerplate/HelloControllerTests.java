@@ -1,8 +1,8 @@
-package com.kfzteile24.mobilebackend;
+package com.kfzteile24.boilerplate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.kfzteile24.mobilebackend.controller.HelloController;
-import com.kfzteile24.mobilebackend.dto.hello.HelloRequest;
+import com.kfzteile24.boilerplate.controller.HelloController;
+import com.kfzteile24.boilerplate.dto.hello.HelloRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

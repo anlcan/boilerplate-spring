@@ -1,13 +1,13 @@
-package com.kfzteile24.mobilebackend;
+package com.kfzteile24.boilerplate;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MobileBackendApplication {
+public class BoilerplateApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MobileBackendApplication.class, args);
+		SpringApplication.run(BoilerplateApplication.class, args);
 	}
 
 }

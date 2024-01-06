@@ -1,4 +1,4 @@
-package com.kfzteile24.mobilebackend.dto.hello;
+package com.kfzteile24.boilerplate.dto.hello;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
