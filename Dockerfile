@@ -11,7 +11,7 @@ LABEL authors="anlcan"
 #RUN wget https://download.newrelic.com/newrelic/java-agent/newrelic-agent/current/newrelic-java.zip \
 #  && unzip newrelic-java.zip -d /usr/local/
 
-# DO NOT RUN healtcheks on the image
+# DO NOT RUN healtcheks on the image, let the pod die
 # HEALTHCHECK --interval=30s --timeout=3s --retries=1 CMD wget -qO- http://localhost:8080/actuator/health/ | grep UP || exit 1
 
 # run `mvn clean verify` first
