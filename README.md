@@ -48,11 +48,11 @@
   - [ ] spring new relic addon
 - database 
   - [ ] jpa 
-  - [ ]liquidbase 
+  - [ ] liquidbase 
   - [ ] minikube 
 - docker-compose? 
 - spring 
-  - [ ] acuator
+  - [x] actuator
   - [ ] env only controllers
   - [ ] tests
   - [ ] mvn profiles 
