@@ -26,6 +26,24 @@ jobs:
         with:
           name: code-coverage-file
           path: target/site/jacoco/jacoco.xml
+
+  codacy-coverage-reporter:
+    needs: unit-tests
+    runs-on: ubuntu-latest
+    name: Codacy code coverage upload
+    steps:
+      - uses: actions/checkout@master
+      - name: Download code coverage report
+        uses: actions/download-artifact@v2
+        with:
+          name: code-coverage-file
+      - name: Run codacy-coverage-reporter
+        uses: codacy/codacy-coverage-reporter-action@master
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: jacoco.xml
+
+
   build:
     runs-on: ubuntu-latest
     needs: [unit-tests]

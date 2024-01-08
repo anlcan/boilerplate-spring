@@ -1,4 +1,5 @@
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/c74d474797eb463aa10bbaf38440e56d)](https://app.codacy.com?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 # Spring Basics
 
@@ -40,6 +41,8 @@
     - enjoy
 
 # K24 Basics
+- Add your repo into codacy and generate a token on the [settings page](https://app.codacy.com/gh/kfzteile24/boilerplate-k8s-app/settings/coverage)
+- use the badge on your readme
 
 
 # TODO
