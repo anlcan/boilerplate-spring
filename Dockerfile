@@ -15,7 +15,8 @@ LABEL authors="anlcan"
 # HEALTHCHECK --interval=30s --timeout=3s --retries=1 CMD wget -qO- http://localhost:8080/actuator/health/ | grep UP || exit 1
 
 # run `mvn clean verify` first
-ADD target/boilerplate-0.1.jar app.jar
+COPY target/boilerplate-0.1.jar app.jar
+
 # better to run this with a java user?
 ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]
 

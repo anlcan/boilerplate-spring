@@ -1,9 +1,9 @@
-
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/c74d474797eb463aa10bbaf38440e56d)](https://app.codacy.com?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 # Spring Basics
 
-- use [actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html?query=health%27%20target=_blank%3E%3Cb%3Ehealth%3C/b%3E%3C/a%3E-groups) 
+-
+use [actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html?query=health%27%20target=_blank%3E%3Cb%3Ehealth%3C/b%3E%3C/a%3E-groups)
 - Separate transfer objects with suffix:
     - controller objects with -Request and -Response
     - queue objects with -Message
@@ -20,12 +20,11 @@
 # AWS Basics
 
 - use [localstack](https://github.com/localstack/localstack)
-- always publish through SNS 
-
+- always publish through SNS
 
 # k8s Basics
 
-- learn [kubectl](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete) 
+- learn [kubectl](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete)
 - Define liveness and readiness probes in your deployment to help Kubernetes know when your app is ready to serve
   traffic and when to restart containers. They are not the same!
 - Use ConfigMaps for non-sensitive configuration data and Secrets for sensitive data, referencing them appropriately in
@@ -41,31 +40,33 @@
     - enjoy
 
 # K24 Basics
-- Add your repo into codacy and generate a token on the [settings page](https://app.codacy.com/gh/kfzteile24/boilerplate-k8s-app/settings/coverage)
+
+- Add your repo into codacy and generate a token on
+  the [settings page](https://app.codacy.com/gh/kfzteile24/boilerplate-k8s-app/settings/coverage)
 - use the badge on your readme
 
-
 # TODO
-- new relic 
-  - [ ] tracing? 
-  - [ ] spring new relic addon
-- database 
-  - [ ] jpa 
-  - [ ] liquidbase 
-  - [ ] minikube 
-- docker-compose? 
-- spring 
-  - [x] actuator
-  - [ ] env only controllers
-  - [ ] tests
-  - [ ] mvn profiles 
-  - [ ] configuration NOT in maven 
+
+- new relic
+    - [ ] tracing?
+    - [ ] spring new relic addon
+- database
+    - [ ] jpa
+    - [ ] liquidbase
+    - [ ] minikube
+- docker-compose?
+- spring
+    - [x] actuator
+    - [ ] env only controllers
+    - [ ] tests
+    - [ ] mvn profiles
+    - [ ] configuration NOT in maven
 - k8s
-  - [ ] ingress
-  - [ ] cronjob
-  - [ ] configmaps
-- localstack 
-  -  [ ] s3 
-  -  [ ] sns ingress 
-  -  [ ] sqs
+    - [ ] ingress
+    - [ ] cronjob
+    - [ ] configmaps
+- localstack
+    -  [ ] s3
+    -  [ ] sns ingress
+    -  [ ] sqs
 
