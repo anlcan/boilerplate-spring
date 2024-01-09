@@ -8,8 +8,9 @@ use [actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/ac
     - controller objects with -Request and -Response
     - queue objects with -Message
     - callback/webhooks with -Notification
-- validate transfer objects with `import javax.validation.constraints.*` using `@valid`
+- validate transfer objects with `import jakarta.validation.constraints.*` using `@valid`
 - test controllers without the whole applicationcontext
+- use sprindoc and swagger for openapi documentation, upload it to bump.sh
 
 # Docker basics
 
@@ -45,6 +46,7 @@ use [actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/ac
   the [settings page](https://app.codacy.com/gh/kfzteile24/boilerplate-k8s-app/settings/coverage)
 - use the badge on your readme
 
+
 # TODO
 
 - new relic
@@ -57,6 +59,7 @@ use [actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/ac
 - docker-compose?
 - spring
     - [x] actuator
+    - [x] springdoc & bumpsh
     - [ ] env only controllers
     - [ ] tests
     - [ ] mvn profiles
