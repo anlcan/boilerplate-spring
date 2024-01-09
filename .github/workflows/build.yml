@@ -17,7 +17,7 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
       - name: Run unit tests
         #run: mvn -s ${MAVEN_SETTINGS_FILE} clean test
-        run: mvn clean test
+        run: mvn clean verify # test vs verify? is clean necessary?
       - name: Create coverage report files
         run:
           mvn jacoco:report
@@ -26,6 +26,12 @@ jobs:
         with:
           name: code-coverage-file
           path: target/site/jacoco/jacoco.xml
+      - name: Upload code openapi results
+        uses: actions/upload-artifact@v2
+        with:
+          name: openapi
+          path: target/openapi.json
+
 
   codacy-coverage-reporter:
     needs: unit-tests
@@ -43,6 +49,21 @@ jobs:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
           coverage-reports: jacoco.xml
 
+  deploy-doc:
+    needs: unit-tests
+    name: Deploy API documentation on Bump
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download api documentations
+        uses: actions/download-artifact@v2
+        with:
+          name: openapi
+      - name: Deploy API documentation
+        uses: bump-sh/github-action@v1
+        with:
+          doc: cdh
+          token: ${{secrets.BUMP_TOKEN}}
+          file: openapi
 
   build:
     runs-on: ubuntu-latest
