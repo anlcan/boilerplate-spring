@@ -61,9 +61,9 @@ jobs:
       - name: Deploy API documentation
         uses: bump-sh/github-action@v1
         with:
-          doc: cdh
+          doc: boilerplate
           token: ${{secrets.BUMP_TOKEN}}
-          file: openapi
+          file: openapi.json
 
   build:
     runs-on: ubuntu-latest
