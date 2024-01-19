@@ -92,7 +92,7 @@ jobs:
         with:
           aws-region: eu-central-1
           role-to-assume: ${{ env.ROLE_ARN }}
-          role-session-name: {{ github.event.repository.name }}-github-action
+          role-session-name: ${{ github.event.repository.name }}-github-action
 
       - name: Setting up cluster connection
         uses: kfzteile24/platform-connectivity-preparation-action@v4.1
