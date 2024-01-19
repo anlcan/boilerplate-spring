@@ -5,14 +5,15 @@
 replicaCount: 1
 
 image:
-  name "ghcr.io/kfzteile24/boiler-plate/app"
+  name "ghcr.io/kfzteile24/boilerplate-k8s-app/app"
   version: "latest"
-  repository: "kfzteile24/boiler-plate"
+  repository: "kfzteile24/boilerplate-k8s-app"
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
-imagePullSecrets: []
+imagePullSecrets:
+  - name: github-packages-registry-key
 nameOverride: ""
 fullnameOverride: ""
 
