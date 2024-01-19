@@ -15,7 +15,6 @@ on:
           - integration-3
           - qa-1
           - qa-2
-          - qa-3
           - r-17-staging
           - r-17-live
       image_tag:
@@ -35,13 +34,11 @@ env:
   # Cluster connection setup
   VPN_PROFILE: ${{ secrets.VPN_PROFILE }}
   GIT_TOKEN: ${{ secrets.GH_TOKEN }}
-  VAULT_GIT_TOKEN: ${{ secrets.VAULT_GIT_TOKEN }}
   PLATFORM_CODE_VALUES_DIR: "kfzteile24/platform-code/master/helm/values"
   # Platform Config:
   PLATFORM_ID: ${{ github.event.inputs.Platform }}
   KUBECONFIG: "kube-config/${{ github.event.inputs.Platform }}.conf"
   # Packages Version:
-  VAULT_VERSION: "1.1.3"
   HELM_VERSION: "3.10.3"
   KUBECTL_VERSION: "1.25.2"
 
@@ -63,9 +60,31 @@ jobs:
           then
             echo "PLATFORM_ENV=${{ env.LIVE_STAGE_NAME }}" >> $GITHUB_ENV
             echo "ROLE_ARN=arn:aws:iam::${{ env.LIVE_ACCOUNT_ID }}:role/${{ env.ROLE_NAME }}" >> $GITHUB_ENV
+            if [[ ${{ github.event.inputs.Platform }}  == "r-17-live" ]];
+            then
+              echo "KUBECONFIG_BASE64=${{ secrets.KUBECONFIG_LIVE }}" >> $GITHUB_ENV
+            else
+              echo "KUBECONFIG_BASE64=${{ secrets.KUBECONFIG_STAGING }}" >> $GITHUB_ENV
+            fi
           else
             echo "PLATFORM_ENV=${{ env.QA_STAGE_NAME }}" >> $GITHUB_ENV
             echo "ROLE_ARN=arn:aws:iam::${{ env.QA_ACCOUNT_ID }}:role/${{ env.ROLE_NAME }}" >> $GITHUB_ENV
+            if [[ ${{ github.event.inputs.Platform }} == "integration-1" ]];
+            then
+              echo "KUBECONFIG_BASE64=${{ secrets.KUBECONFIG_INT_1 }}" >> $GITHUB_ENV
+            elif [[ ${{ github.event.inputs.Platform }} == "integration-2" ]];
+            then
+              echo "KUBECONFIG_BASE64=${{ secrets.KUBECONFIG_INT_2 }}" >> $GITHUB_ENV
+            elif [[ ${{ github.event.inputs.Platform }} == "integration-3" ]];
+            then
+              echo "KUBECONFIG_BASE64=${{ secrets.KUBECONFIG_INT_3 }}" >> $GITHUB_ENV
+            elif [[ ${{ github.event.inputs.Platform }} == "qa-1" ]];
+            then
+              echo "KUBECONFIG_BASE64=${{ secrets.KUBECONFIG_QA_1 }}" >> $GITHUB_ENV
+            elif [[ ${{ github.event.inputs.Platform }} == "qa-2" ]];
+            then
+              echo "KUBECONFIG_BASE64=${{ secrets.KUBECONFIG_QA_2 }}" >> $GITHUB_ENV
+            fi
           fi
 
       - name: Configure AWS Credentials
@@ -76,16 +95,15 @@ jobs:
           role-session-name: last-prices-service-github-action
 
       - name: Setting up cluster connection
-        uses: kfzteile24/platform-connectivity-preparation-action@v3.0
+        uses: kfzteile24/platform-connectivity-preparation-action@v4.1
         with:
           VPN_PROFILE: ${{ env.VPN_PROFILE }}
           GIT_TOKEN: ${{ env.GIT_TOKEN }}
-          VAULT_GIT_TOKEN: ${{ env.VAULT_GIT_TOKEN }}
           PLATFORM_CODE_VALUES_DIR: ${{ env.PLATFORM_CODE_VALUES_DIR }}
           PLATFORM_ID: ${{ env.PLATFORM_ID }}
           KUBECONFIG: ${{ env.KUBECONFIG }}
+          KUBECONFIG_BASE64: ${{ env.KUBECONFIG_BASE64 }}
           PLATFORM_ENV: ${{ env.PLATFORM_ENV }}
-          VAULT_VERSION: ${{ env.VAULT_VERSION }}
           HELM_VERSION: ${{ env.HELM_VERSION }}
           KUBECTL_VERSION: ${{ env.KUBECTL_VERSION }}
 
@@ -104,6 +122,4 @@ jobs:
                       --namespace default \
                       --values helm/last-prices-service-app/values.yaml \
                       --values k8s/${{ env.PLATFORM_ID }}/platform-config.yaml \
-                      --values k8s/${{ env.PLATFORM_ID }}/platform-secrets.yaml \
-                      --values k8s/${{ env.PLATFORM_ID }}/stage-config.yaml \
-                      --values k8s/${{ env.PLATFORM_ID }}/stage-secrets.yaml
+                      --values k8s/${{ env.PLATFORM_ID }}/stage-config.yaml
