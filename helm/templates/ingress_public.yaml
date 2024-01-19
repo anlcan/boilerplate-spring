@@ -1,0 +1,56 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx-public
+    meta.helm.sh/release-name: sc-ingress-rules-api-test-kfz42-de
+    meta.helm.sh/release-namespace: default
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_set_headers "X-Content-Type-Options: nosniff";
+      more_set_headers "Strict-Transport-Security: max-age=63072000; includeSubDomains;";
+      proxy_ignore_client_abort on;
+      real_ip_header X-Forwarded-For;
+      real_ip_recursive on;
+      set_real_ip_from 0.0.0.0/0;
+      satisfy any;
+        allow 35.157.235.166;
+        allow 35.157.235.166;
+        allow 62.217.51.106/32;
+        allow 213.155.65.64/26;
+        allow 3.121.141.196/32;
+        allow 3.121.17.210/32;
+        allow 3.121.36.111/32;
+      # Newrelic IPs
+        allow 3.71.170.0/24;
+        allow 3.71.103.96/27;
+        allow 3.75.4.128/25;
+        allow 52.58.229.238/32;
+        allow 18.194.77.136/32;
+        allow 35.157.232.3/32;
+        allow 18.195.163.71/32;
+        allow 35.158.225.167/32;
+        allow 18.196.119.136/32;
+        allow 18.196.204.231/32;
+        allow 18.194.190.77/32;
+        allow 52.58.190.36/32;
+      deny all;
+    nginx.ingress.kubernetes.io/custom-http-errors: "503"
+    nginx.ingress.kubernetes.io/default-backend: default-http-backend
+    nginx.ingress.kubernetes.io/enable-cors: "false"
+    nginx.ingress.kubernetes.io/limit-rpm: "1800"
+    nginx.ingress.kubernetes.io/proxy-body-size: 100m
+    nginx.ingress.kubernetes.io/proxy-buffer-size: 64k
+  name: api-boiler-plate-test-kfz42-de-service
+  namespace: default
+spec:
+  rules:
+    - host: qa-2-api.test-kfz42.de
+      http:
+        paths:
+          - backend:
+              service:
+                name: {{ .Chart.Name }}
+                port:
+                  number: 80
+            path: /{{ .Chart.Name }}/v1 # TODO think about this
+            pathType: Prefix

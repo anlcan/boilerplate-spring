@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  name "ghcr.io/kfzteile24/boilerplate-k8s-app/app"
+  name: "ghcr.io/kfzteile24/boilerplate-k8s-app/app"
   version: "latest"
   repository: "kfzteile24/boilerplate-k8s-app"
   pullPolicy: IfNotPresent

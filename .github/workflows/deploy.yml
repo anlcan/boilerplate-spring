@@ -20,7 +20,7 @@ on:
       image_tag:
         description: Tag of the image you would like to deploy
         required: false
-        default: main-snapshot
+        default: latest
 
 run-name: ${{ inputs.Platform }} deployment
 
@@ -92,7 +92,7 @@ jobs:
         with:
           aws-region: eu-central-1
           role-to-assume: ${{ env.ROLE_ARN }}
-          role-session-name: last-prices-service-github-action
+          role-session-name: {{ github.event.repository.name }}-github-action
 
       - name: Setting up cluster connection
         uses: kfzteile24/platform-connectivity-preparation-action@v4.1
@@ -107,19 +107,10 @@ jobs:
           HELM_VERSION: ${{ env.HELM_VERSION }}
           KUBECTL_VERSION: ${{ env.KUBECTL_VERSION }}
 
-      - name: Updating image tag
-        if: github.event_name == 'workflow_dispatch' && github.event.inputs.image_tag != ''
-        run: |
-          sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
-          sudo chmod a+x /usr/local/bin/yq
-          yq -i '.last_pricesservice.app.container.app.version = "${{ github.event.inputs.image_tag }}"' helm/last-prices-service-app/values.yaml
-
       - name: Deploy helm chart
         run: |
           helm upgrade --install --wait --timeout 5m --force \
-                      last-prices-service \
-                      helm/last-prices-service-app/ \
+                      {{ github.event.repository.name }} \
+                      helm/ \
                       --namespace default \
-                      --values helm/last-prices-service-app/values.yaml \
-                      --values k8s/${{ env.PLATFORM_ID }}/platform-config.yaml \
-                      --values k8s/${{ env.PLATFORM_ID }}/stage-config.yaml
+                      --values helm/values.yaml

@@ -39,7 +39,10 @@ use [actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/ac
     - create a deployment and service(nodeport)
     - expose the port 'minikube service <service name> --url'
     - enjoy
-
+- ingress
+  - [helm](https://helm.sh/docs/intro/quickstart/)
+  - {host}/{service-name}/{version}/{path} 
+    - [ ] get the version from pom.xml
 # K24 Basics
 
 - Add your repo into codacy and generate a token on
