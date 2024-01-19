@@ -110,7 +110,7 @@ jobs:
       - name: Deploy helm chart
         run: |
           helm upgrade --install --wait --timeout 5m --force \
-                      {{ github.event.repository.name }} \
+                      ${{ github.event.repository.name }} \
                       helm/ \
                       --namespace default \
                       --values helm/values.yaml
