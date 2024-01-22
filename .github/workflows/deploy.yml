@@ -113,4 +113,6 @@ jobs:
                       ${{ github.event.repository.name }} \
                       helm/ \
                       --namespace default \
-                      --values helm/values.yaml
+                      --values helm/values.yaml \
+                      --values k8s/${{ env.PLATFORM_ID }}/platform-config.yaml \
+                      --values k8s/${{ env.PLATFORM_ID }}/stage-config.yaml

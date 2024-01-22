@@ -49,6 +49,17 @@ spec:
           volumeMounts:
             {{- toYaml . | nindent 12 }}
           {{- end }}
+          env:
+          - name: NEW_RELIC_APP_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Chart.Name }}-config
+                key: newrelic_app_name
+          - name: NEW_RELIC_LICENSE_KEY
+            valueFrom:
+              secretKeyRef:
+                name: global-secrets
+                key: newrelic_license_key
       {{- with .Values.volumes }}
       volumes:
         {{- toYaml . | nindent 8 }}

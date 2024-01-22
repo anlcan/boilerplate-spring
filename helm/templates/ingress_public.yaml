@@ -24,4 +24,4 @@ spec:
             port:
               number: 80
         path: /v1/api(/|$)(.*)
-        pathType: Prefix
+        pathType: ImplementationSpecific
