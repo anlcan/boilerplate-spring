@@ -14,7 +14,7 @@ How to use this boilerplate: When creating a new service, simple chose this boil
 replace all occurrences of 'boilerplate' and 'boiler-plate' with your service name. 
 
 
-# Contents and the Roadmap
+# Contents and the Guidelines
 ## Spring Basics
 
 - use [actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html?query=health%27%20target=_blank%3E%3Cb%3Ehealth%3C/b%3E%3C/a%3E-groups)
@@ -31,11 +31,16 @@ replace all occurrences of 'boilerplate' and 'boiler-plate' with your service na
 - Read [docker caching](https://docs.docker.com/build/cache/)
 - and docker [env variables](https://docs.docker.com/build/building/env-vars/)
 - Do not run HEALTHCHECKS (this should be done by orchestration, let the pod die if image fails)
+- Do put ENV variables into the Dockerfile or use scripts to set them, this should be done by the orchestration/K8s with 
+    secrets and configmaps
+- 
 
 ## AWS Basics
 
-- use [localstack](https://github.com/localstack/localstack)
-- always publish through SNS
+- learn & use [localstack](https://github.com/localstack/localstack) for local development
+- always publish events through SNS
+- configure SNS through beans 
+- use [spring-cloud-aws-messaging](https://cloud.spring.io/spring-cloud-aws/reference/html/#_messaging) for SNS/SQS
 
 ## k8s Basics
 
@@ -64,9 +69,10 @@ replace all occurrences of 'boilerplate' and 'boiler-plate' with your service na
   the [settings page](https://app.codacy.com/gh/kfzteile24/boilerplate-k8s-app/settings/coverage)
 - use the badge on your readme
 
-## TODO
+# Roadmap
 
 - new relic
+    - [ ] sending events to new relic
     - [ ] tracing?
     - [ ] spring new relic addon
 
