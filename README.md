@@ -55,10 +55,11 @@ use [actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/ac
 - new relic
     - [ ] tracing?
     - [ ] spring new relic addon
+
 - database
     - [ ] jpa
     - [ ] liquidbase
-    - [ ] minikube
+
 - docker-compose?
 - spring
     - [x] actuator
@@ -68,9 +69,9 @@ use [actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/ac
     - [ ] mvn profiles
     - [ ] configuration NOT in maven
 - k8s
-    - [ ] ingress
+    - [x] ingress
     - [ ] cronjob
-    - [ ] configmaps
+    - [x] configmaps
 - localstack
     -  [ ] s3
     -  [ ] sns ingress

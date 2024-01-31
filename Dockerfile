@@ -8,8 +8,8 @@ FROM amazoncorretto:21-alpine
 LABEL authors="anlcan"
 
 # Install newrelic agent
-#RUN wget https://download.newrelic.com/newrelic/java-agent/newrelic-agent/current/newrelic-java.zip \
-#  && unzip newrelic-java.zip -d /usr/local/
+RUN wget https://download.newrelic.com/newrelic/java-agent/newrelic-agent/current/newrelic-java.zip \
+  && unzip newrelic-java.zip -d /usr/local/
 
 # DO NOT RUN healtcheks on the image, let the pod die
 # HEALTHCHECK --interval=30s --timeout=3s --retries=1 CMD wget -qO- http://localhost:8080/actuator/health/ | grep UP || exit 1
@@ -18,5 +18,7 @@ LABEL authors="anlcan"
 COPY target/boilerplate-0.1.jar app.jar
 
 # better to run this with a java user?
-ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS \
+                          -javaagent:/usr/local/newrelic/newrelic.jar \
+                          -jar app.jar"]
 
