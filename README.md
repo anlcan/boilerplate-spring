@@ -1,14 +1,7 @@
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/c74d474797eb463aa10bbaf38440e56d)](https://app.codacy.com?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
-
 # Boilerplate for k8s apps
 
-Objective: To develop a standardized Spring base java project boilerplate, enabling us to rapidly initiate new services
+Objective: To develop a standardized Spring base java project boilerplate, to rapidly initiate new services
 within a one-day timeframe.
-
-Background: Our current process for starting new Java-based services both on ECP and BOE is time-consuming and lacks
-uniformity, leading to discrepancies in project setups and increased ramp-up time. To streamline this process and foster
-a more efficient and cohesive development environment, a Java project boilerplate is proposed: a standardized,
-pre-configured project template that can be used to quickly initiate new services.
 
 How to use this boilerplate: When creating a new service, simple chose this boiler-plate as template and start. Search and 
 replace all occurrences of 'boilerplate' and 'boiler-plate' with your service name. 
@@ -23,21 +16,20 @@ replace all occurrences of 'boilerplate' and 'boiler-plate' with your service na
     - queue objects with -Message
     - callback/webhooks with -Notification
 - validate transfer objects with `import jakarta.validation.constraints.*` using `@valid`
-- test controllers without the whole applicationcontext
-- use sprindoc and swagger for openapi documentation, upload it to bump.sh
+- test controllers without the whole application context
+- use springdoc and swagger for openapi documentation, upload it to bump.sh
 
 ## Docker basics
 
 - Read [docker caching](https://docs.docker.com/build/cache/)
 - and docker [env variables](https://docs.docker.com/build/building/env-vars/)
-- Do not run HEALTHCHECKS (this should be done by orchestration, let the pod die if image fails)
-- Do put ENV variables into the Dockerfile or use scripts to set them, this should be done by the orchestration/K8s with 
+- Do NOT run HEALTHCHECKS (this should be done by orchestration, let the pod die if image fails)
+- Do NOT put ENV variables into the Dockerfile or use scripts to set them, this should be done by the orchestration/K8s with 
     secrets and configmaps
-- 
 
 ## AWS Basics
 
-- learn & use [localstack](https://github.com/localstack/localstack) for local development
+- use [localstack](https://github.com/localstack/localstack) for local development
 - always publish events through SNS
 - configure SNS through beans 
 - use [spring-cloud-aws-messaging](https://cloud.spring.io/spring-cloud-aws/reference/html/#_messaging) for SNS/SQS
@@ -71,16 +63,10 @@ replace all occurrences of 'boilerplate' and 'boiler-plate' with your service na
 
 # Roadmap
 
-- new relic
-    - [ ] sending events to new relic
-    - [ ] tracing?
-    - [ ] spring new relic addon
-
 - database
     - [ ] jpa
     - [ ] liquidbase
 
-- docker-compose?
 - spring
     - [x] actuator
     - [x] springdoc & bumpsh
